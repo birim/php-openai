@@ -63,11 +63,10 @@ class OpenAIClient
     public function get($endpoint)
     {
         try {
-            return $this->response(
-                $this->client->get($this->version . '/' . $endpoint, [
-                    'headers' => $this->requestHeader()
-                ])
-            );
+            $guzzleResponse = $this->client->get($this->version . '/' . $endpoint, [
+                'headers' => $this->requestHeader()
+            ]);
+            return $this->response($guzzleResponse->getBody()->getContents());
         } catch(GuzzleException $exception) {
             return $this->error($exception);
         } catch(Exception $exception) {
@@ -84,11 +83,10 @@ class OpenAIClient
     public function delete($endpoint)
     {
         try {
-            return $this->response(
-                $this->client->delete($this->version . '/' . $endpoint, [
-                    'headers' => $this->requestHeader()
-                ])
-            );
+            $guzzleResponse = $this->client->delete($this->version . '/' . $endpoint, [
+                'headers' => $this->requestHeader()
+            ]);
+            return $this->response($guzzleResponse->getBody()->getContents());
         } catch(GuzzleException $exception) {
             return $this->error($exception);
         } catch(Exception $exception) {
@@ -119,9 +117,8 @@ class OpenAIClient
         }
 
         try {
-            return $this->response(
-                $this->client->post($endpoint, $options)
-            );
+            $guzzleResponse = $this->client->post($endpoint, $options);
+            return $this->response($guzzleResponse->getBody()->getContents());
         } catch(GuzzleException $exception) {
             return $this->error($exception);
         } catch(Exception $exception) {
