@@ -1,0 +1,25 @@
+{
+  "name": "birim/php-openai",
+  "description": "The OpenAI SDK for PHP helps you to integrate OpenAI into your app",
+  "keywords": ["openai", "php", "chatgpt", "sdk"],
+  "homepage": "https://github.com/birim/php-openai.git",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Birim Karaustaoglu",
+      "email": "birim.karaustaoglu@outlook.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.3",
+    "guzzlehttp/guzzle": "^7.0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Birim\\OpenAI\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
