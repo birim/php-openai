@@ -41,6 +41,13 @@ require 'vendor/autoload.php';
 // Create an instance
 $client = new OpenAIClient('YOUR_API_KEY');
 
-// Get available models from OpenAI
-$models = OpenAIModel::models($client);
+// Create image
+$imageCreateData = new ImageCreateData();
+$imageCreateData->prompt = 'Axolotl';
+
+$response = OpenAIImage::generations($client, $imageCreateData);
+
+foreach ($response['data'] as $data) {
+    echo '<img src="'.$data['url'].'" />';
+}
 ```

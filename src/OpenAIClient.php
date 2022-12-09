@@ -117,7 +117,7 @@ class OpenAIClient
         }
 
         try {
-            $guzzleResponse = $this->client->post($endpoint, $options);
+            $guzzleResponse = $this->client->post($this->version . '/' . $endpoint, $options);
             return $this->response($guzzleResponse->getBody()->getContents());
         } catch(GuzzleException $exception) {
             return $this->error($exception);
